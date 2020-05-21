@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kitchen Recipes</title>
+<link rel="stylesheet" type = "text/css" href="/stylesheets/style.css">
+</head>
+<body>
+<% include ./partials/header.ejs %>
+<% include ./partials/user-navigation.ejs %>
+<main>
+  <!--<a href="/categories" class="return">Return&#8592;</a>-->
+  <h2>Incredible India Recipes </h2>
+  <table class='myitems'>
+  <thead>
+  <tr>
+    <th>RECIPE</th>
+    <th>CATEGORY</th>
+    <th>MY RATING</th>
+    <th>TRIED ONCE ?</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% if(data.userProfile!=null){%>
+<% for(var i=0; i<data.userProfile.userItemlist.length; i++){ %>
+    <tr>
+      <% console.log("In myItems page"+ data.userProfile.userItemlist[i].madeit) %>
+      <%console.log(data.userProfile.userItemlist); %>
+      <td><%= data.userProfile.userItemlist[i].itemName%></td>
+      <td><%= data.userProfile.userItemlist[i].catalogCategory%></td>
+      <td><%= data.userProfile.userItemlist[i].rating%></td>
+      <td><%= data.userProfile.userItemlist[i].madeit%></td>
+      <td>
+        <a href="/categories/item/<%=data.userProfile.userItemlist[i].itemCode%>/feedback" class="update btn">UPDATE</a>
+        <a href="/myItems/delete/<%=data.userProfile.userItemlist[i].itemCode%>" class="delete btn">DELETE</a>
+      </td>
+    </tr>
+    <% } %>
+<% } %>
+  </tbody>
+  </table>
+  <div class="bottom-msg">
+    <p id='info'>&sext; indicates My Recipe.</p>
+    <p id='new'>click <a href="#">here</a> to share a new recipe..</p>
+  </div>
+</main>
+<% include ./partials/site-navigation.ejs %>
+<% include ./partials/footer.ejs %>
+</body>
+</html>

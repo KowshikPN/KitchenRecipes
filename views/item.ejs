@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kitchen Recipes</title>
+<link rel="stylesheet" type = "text/css" href="/stylesheets/style.css">
+</head>
+<body>
+<% include ./partials/header.ejs %>
+<% include ./partials/user-navigation.ejs %>
+<main>
+<div>
+    <img src="<%= data[0].imgUrl %>" alt="food_pic" class="snacks" >
+    <h2><%= data[0].itemName%></h2>
+    <h3><%= data[0].catalogCategory %></h3>
+    <p id="star1">RATING : <%= data[0].rating %></p>
+    <a href="/categories/item/saveIt/<%= data[0].itemCode%>" class="save">Save It &#x2764;</a>
+    <a href="/categories/item/<%= data[0].itemCode%>/feedback" class="rate">Rate It&nbsp; &#9733;</a>
+</div>
+<section id="Ingredients">
+<h3><%= data[0].description %></h3>
+
+
+</section>
+<a href="/categories" class="return">Return&#8592;</a>
+</main>
+<% include ./partials/site-navigation.ejs %>
+<% include ./partials/footer.ejs %>
+</body>
+</html>

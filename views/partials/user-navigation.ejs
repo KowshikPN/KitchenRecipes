@@ -1,0 +1,16 @@
+<link rel="stylesheet" type="text/css" media="screen" href='/stylesheets/style.css'/>
+  <nav>
+  <ul>
+  <li class="topbar">
+  <% console.log(logVal!==undefined) %>
+  <% if(logVal!==undefined){%>
+      <a href="/logout">SignOut</a>
+<%}else{%>
+  <a href="/redirect">SignIn</a>
+<% } %>
+   </li>
+  <li class="topbar"><a href='/myItems'>My Food Item</a></li>
+
+  <li class="topbar"><a href='#'>My Cart</a></li>
+  </ul>
+  </nav>

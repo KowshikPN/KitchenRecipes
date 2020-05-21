@@ -1,0 +1,13 @@
+<link rel="stylesheet" type="text/css" media="screen" href='/stylesheets/style.css'/>
+<header>
+  <% if(logVal==undefined){%>
+    <p class='status'>Not Signed In !</p>
+<%}else{%>
+  <% console.log("firstName"+ JSON.stringify(logVal[0].firstName)) %>
+    <p class='status'><%= 'Hi '+logVal[0].firstName%></p>
+<% } %>
+    <div class="logo-head-wrapper">
+      <img src='/images/logo.png' alt='Food Receipies'>
+      <h1> KITCHEN RECIPES </h1>
+    </div>
+  </header>

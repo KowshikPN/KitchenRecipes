@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>feedback</title>
+    <link rel="stylesheet" type="text/css" href='/stylesheets/style.css'/>
+</head>
+
+<body>
+   <% include ./partials/header.ejs %>
+   <% include ./partials/user-navigation.ejs %>
+   <% include ./partials/site-navigation.ejs %>
+<main>
+  <div>
+    <% console.log( " I am here in feedback page :"+ data.item[0].imgUrl) %>
+      <img src="<%= data.item[0].imgUrl %>"alt="food_pic" class="snacks" >
+      <h2><%= data.item[0].itemName%></h2>
+      <h3><%= data.item[0].catalogCategory %></h3>
+  </div>
+  <section id="Ingredients">
+  <h3><%= data.item[0].description %></h3><br>
+  <form method="POST" action="/update/feedback/<%= data.item[0].itemCode%>">
+                      <input type="hidden" id="ratingHidden" name="feedbackHidden" value="rating">
+                      <input type="hidden" name="itemCode" value="<%= data.item[0].itemCode%>">
+                      <input type="hidden" name="itemList" value="<%= data.item[0].itemCode%>">
+                      <div class="form-group row">
+                          <label for="staticRating" class="col-md-2 col-form-label">Rating</label>
+                          <div class="col-md-6">
+                              <select class="form-control" id="ratingSelect" name="rating">
+                              <option value="0">0 Star</option>
+                              <option value="1">1 Star</option>
+                              <option value="2">2 Star</option>
+                              <option value="3">3 Star</option>
+                              <option value="4">4 Star</option>
+                              <option value="5">5 Star</option>
+                              </select>
+                          </div>
+                          <div class="col-md-4">
+                              <button type="submit" class="btn btn-primary main-content-div">Confirm Rating</button>
+                          </div>
+                      </div>
+                  </form>
+
+                  <form method="POST" action="/update/feedback/<%= data.item[0].itemCode%>">
+                      <input type="hidden" id="madeItHidden" name="feedbackHidden" value="madeIt">
+                      <input type="hidden" name="itemCode" value="<%= data.item[0].itemCode%>">
+                      <input type="hidden" name="itemList" value="<%= data.item[0].itemCode%>">
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="madeItRadio" id="madeIt1" value="true">
+                          <label class="form-check-label" for="madeIt1">True</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="madeItRadio" id="madeIt2" value="false">
+                          <label class="form-check-label" for="madeIt2">False</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <button type="submit" class="btn btn-primary main-content-div">Made It</button>
+                      </div>
+                  </form>
+
+  <!-- <form method="POST" action="/update/feedback/<%= data.item.itemCode%>">
+      <input type="hidden" id="madeItHidden" name="feedbackHidden" value="madeIt">
+      <input type="hidden" name="itemCode" value="<%= data.item.itemCode%>">
+      <input type="hidden" name="itemList" value="<%= data.item.itemCode%>">
+          <button type="submit" class="">Made It</button>
+      </div>
+  </form> -->
+</div>
+  </section>
+  <a href="/categories" class="return">Return&#8592;</a>
+</main>
+
+  <% include ./partials/footer.ejs %>
+
+</body>
+</html>
